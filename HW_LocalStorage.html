@@ -86,36 +86,39 @@ fieldset .submit {
 
 <script type="text/javascript" src="jquery-1.9.1.min.js" ></script>
 <script>
+  function doChange()
+  {                                       　//鍵盤輸入值儲存到localStorage
+  	localStorage.setItem(this.name,this.value);
+  }
   
-    function doChange ()                        //取得輸入資料存到localStorage
-    {                                     
-	    localStorage.setItem(this.name, this.value);
-    }
-         document.getElementById("txtName").onkeyup = doChange;    //鍵盤彈起---觸發keyup事件
-         document.getElementById("txtEmail").onkeyup = doChange;
-         document.getElementById("txtPhone").onkeyup = doChange;
-    
-	function readAndShow()                      //讀取顯示出localStorare存取的值
-	{                                       
-		if (localStorage["txtName"])
-			document.getElementById("txtName").value = localStorage["txtName"];
-		if (localStorage["txtEmail"])
-			document.getElementById("txtEmail").value = localStorage["txtEmail"];
-		if (localStorage["txtPhone"])
-			document.getElementById("txtPhone").value = localStorage["txtPhone"];
-	}
-	
-	window.onload = readAndShow;                //讀取readAndShow函式
-	
-	
-	document.forms[0].onsubmit = function () 
-	{ 
-	    localStorage.clear();                   //清除資料
-	    
-	}; 
-	
-
-	
+	$("#txtName").keyup(doChange);		   //鍵盤彈起觸發keyup
+	$("#txtEmail").keyup(doChange);
+	$("#txtPhone").keyup(doChange);
+  
+  function readAndShow()				   //讀取localStorage輸入值
+  {					
+  	if(localStorage["txtName"])
+  	{                             　
+  		$("#txtName").val(localStorage["txtName"]);
+  	}
+	if(localStorage["txtEmail"])
+  	{                             
+  		$("#txtEmail").val(localStorage["txtEmail"]);
+  	}
+  	if(localStorage["txtPhone"])
+  	{                             
+  		$("#txtPhone").val(localStorage["txtPhone"]);
+  	}
+  }
+  
+  $(document).ready(readAndShow);    //準備執行readAndShow函式
+  
+  $("form").submit(function()
+  {
+  	localStorage.clear();           //清除localStorage
+  	
+  });
+  
 </script>
 
 
