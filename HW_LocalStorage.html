@@ -87,15 +87,15 @@ fieldset .submit {
 <script type="text/javascript" src="jquery-1.9.1.min.js" ></script>
 <script>
   function doChange()
-  {                                       　//鍵盤輸入值儲存到localStorage
+  {                                       //鍵盤輸入值儲存到localStorage
   	localStorage.setItem(this.name,this.value);
   }
   
-	$("#txtName").keyup(doChange);		   //鍵盤彈起觸發keyup
+	$("#txtName").keyup(doChange);	 //鍵盤彈起觸發keyup
 	$("#txtEmail").keyup(doChange);
 	$("#txtPhone").keyup(doChange);
   
-  function readAndShow()				   //讀取localStorage輸入值
+  function readAndShow()		 //讀取localStorage輸入值
   {					
   	if(localStorage["txtName"])
   	{                             　
@@ -115,7 +115,7 @@ fieldset .submit {
   
   $("form").submit(function()
   {
-  	localStorage.clear();           //清除localStorage
+  	localStorage.clear();       //清除localStorage
   	
   });
   
